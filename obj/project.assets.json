@@ -12423,11 +12423,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\CodeRepo\\Projects\\PostcardApp\\PostcardApp.csproj",
+      "projectUniqueName": "C:\\CodeRepo\\GitHub\\PostcardApp\\PostcardApp.csproj",
       "projectName": "PostcardApp",
-      "projectPath": "C:\\CodeRepo\\Projects\\PostcardApp\\PostcardApp.csproj",
+      "projectPath": "C:\\CodeRepo\\GitHub\\PostcardApp\\PostcardApp.csproj",
       "packagesPath": "C:\\Users\\Farhan\\.nuget\\packages\\",
-      "outputPath": "C:\\CodeRepo\\Projects\\PostcardApp\\obj\\",
+      "outputPath": "C:\\CodeRepo\\GitHub\\PostcardApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",

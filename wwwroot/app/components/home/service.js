@@ -10,7 +10,7 @@ define(["app"], function (app) {
 
         this.sendEmail = function (data) {
             return Upload.upload({
-                url: serviceBase + "uploadImage/",
+                url: serviceBase + "sendEmail/",
                 method: "POST",
                 data: data
             });

@@ -21,7 +21,7 @@ namespace PostcardApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<PostcardContext>(options => options.UseSqlite(string.Format("Filename={0}/MyData.db", AppDomain.CurrentDomain.BaseDirectory)));
+            services.AddDbContext<PostcardContext>(options => options.UseSqlite(string.Format("Filename={0}/postcard.db", AppDomain.CurrentDomain.BaseDirectory)));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

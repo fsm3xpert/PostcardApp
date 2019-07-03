@@ -89,15 +89,15 @@ namespace PostcardApp.Controllers
                     // client.Port = 587;
                     // client.Send(mailMessage);
 
-                    var newImage = new Image {
-                        ImageName = fileName,
-                        GeoTag = "", 
-                        CreatedOn = DateTime.Now, 
-                        ModifiedOn = DateTime.Now
-                    };
+                    // var newImage = new Image {
+                    //     ImageName = fileName,
+                    //     GeoTag = "", 
+                    //     CreatedOn = DateTime.Now, 
+                    //     ModifiedOn = DateTime.Now
+                    // };
 
-                    _context.Images.Add(newImage);
-                    _context.SaveChanges();
+                    // _context.Images.Add(newImage);
+                    // _context.SaveChanges();
 
                     return Ok();
                 }
