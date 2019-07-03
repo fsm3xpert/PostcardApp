@@ -85,7 +85,7 @@ namespace PostcardApp.Controllers
 
                     // SmtpClient client = new SmtpClient("smtp.sendgrid.net");
                     // client.UseDefaultCredentials = false;
-                    // client.Credentials = new NetworkCredential("apikey", "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");
+                    // client.Credentials = new NetworkCredential("apikey", "XYZ");
                     // client.Port = 587;
                     // client.Send(mailMessage);
 
