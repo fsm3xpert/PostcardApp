@@ -28,8 +28,8 @@ Working on it.
 
 * [jQuery](https://jquery.com/) - Used for document traversal, manipulation & event handling
 * [AngularJS](https://angularjs.org/) - The web framework used
-* [Bootstrap](https://getbootstrap.com/) - Responsive UI framework
-* [RequireJS](https://requirejs.org/) - Managed script dependencies
+* [Bootstrap](https://getbootstrap.com/) - For Responsive UI
+* [RequireJS](https://requirejs.org/) - Managing scripts and module dependencies
 * [FabricJS](http://fabricjs.com/) - Canvas library used for image modification
 * [ng-file-upload](https://github.com/danialfarid/ng-file-upload) - Upload modified image to server
 
