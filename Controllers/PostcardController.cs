@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
+using PostcardApp.Infrastructure.Logging;
 using PostcardApp.Models;
 
 namespace PostcardApp.Controllers
@@ -25,33 +26,6 @@ namespace PostcardApp.Controllers
         {
             _context = context;
             _hostingEnvironment = hostingEnvironment;
-
-            if (_context.Images.Count() == 0)
-            {
-                _context.Images.Add(new Image { ImageName = "Test123.png", GeoTag = "", CreatedOn = DateTime.Now, ModifiedOn = DateTime.Now });
-                _context.SaveChanges();
-            }
-        }
-
-        // GET: api/Postcard
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Image>>> GetPostcardImages()
-        {
-            return await _context.Images.ToListAsync();
-        }
-
-        // GET: api/Postcard/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Image>> GetPostcardImage(long id)
-        {
-            var todoItem = await _context.Images.FindAsync(id);
-
-            if (todoItem == null)
-            {
-                return NotFound();
-            }
-
-            return todoItem;
         }
 
         [HttpPost]
@@ -76,6 +50,8 @@ namespace PostcardApp.Controllers
                         }
                     }
 
+                    Logger.WriteInfo("Test Logs");
+
                     // MailMessage mailMessage = new MailMessage();
                     // mailMessage.From = new MailAddress("fsm.expert@outlook.com");
                     // mailMessage.To.Add(Request.Form["sentEmailTo"].ToString());
@@ -85,7 +61,7 @@ namespace PostcardApp.Controllers
 
                     // SmtpClient client = new SmtpClient("smtp.sendgrid.net");
                     // client.UseDefaultCredentials = false;
-                    // client.Credentials = new NetworkCredential("apikey", "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");
+                    // client.Credentials = new NetworkCredential("apikey", "XYZ");
                     // client.Port = 587;
                     // client.Send(mailMessage);
 
@@ -108,6 +84,7 @@ namespace PostcardApp.Controllers
             }
             catch (Exception ex)
             {
+                Logger.WriteError(ex);
                 return StatusCode(500, ex.Message);
             }
         }
@@ -116,6 +93,7 @@ namespace PostcardApp.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Image>>> ListImages()
         {
+            Logger.WriteInfo("Fetching list of Images");
             return await _context.Images.ToListAsync();
         }
     }
