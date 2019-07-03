@@ -1,6 +1,7 @@
 /node_modules
-FileSystem/
-Logs/
+FileSystem/Images/*
+FileSystem/Temp/*
+Logs/*
 bin/Debug/netcoreapp2.2/PostcardApp.dll
 bin/Debug/netcoreapp2.2/PostcardApp.pdb
 obj/Debug/netcoreapp2.2/PostcardApp.dll
