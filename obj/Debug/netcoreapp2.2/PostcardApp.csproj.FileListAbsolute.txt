@@ -1,0 +1,14 @@
+C:\CodeRepo\Projects\PostcardApp\bin\Debug\netcoreapp2.2\PostcardApp.deps.json
+C:\CodeRepo\Projects\PostcardApp\bin\Debug\netcoreapp2.2\PostcardApp.runtimeconfig.json
+C:\CodeRepo\Projects\PostcardApp\bin\Debug\netcoreapp2.2\PostcardApp.runtimeconfig.dev.json
+C:\CodeRepo\Projects\PostcardApp\bin\Debug\netcoreapp2.2\PostcardApp.dll
+C:\CodeRepo\Projects\PostcardApp\bin\Debug\netcoreapp2.2\PostcardApp.pdb
+C:\CodeRepo\Projects\PostcardApp\obj\Debug\netcoreapp2.2\PostcardApp.csprojAssemblyReference.cache
+C:\CodeRepo\Projects\PostcardApp\obj\Debug\netcoreapp2.2\PostcardApp.csproj.CoreCompileInputs.cache
+C:\CodeRepo\Projects\PostcardApp\obj\Debug\netcoreapp2.2\PostcardApp.RazorAssemblyInfo.cache
+C:\CodeRepo\Projects\PostcardApp\obj\Debug\netcoreapp2.2\PostcardApp.RazorAssemblyInfo.cs
+C:\CodeRepo\Projects\PostcardApp\obj\Debug\netcoreapp2.2\PostcardApp.AssemblyInfoInputs.cache
+C:\CodeRepo\Projects\PostcardApp\obj\Debug\netcoreapp2.2\PostcardApp.AssemblyInfo.cs
+C:\CodeRepo\Projects\PostcardApp\obj\Debug\netcoreapp2.2\PostcardApp.RazorTargetAssemblyInfo.cache
+C:\CodeRepo\Projects\PostcardApp\obj\Debug\netcoreapp2.2\PostcardApp.dll
+C:\CodeRepo\Projects\PostcardApp\obj\Debug\netcoreapp2.2\PostcardApp.pdb
