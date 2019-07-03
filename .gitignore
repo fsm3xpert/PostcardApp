@@ -1,2 +1,9 @@
 /node_modules
+FileSystem/Images/
+Logs/
+bin/Debug/netcoreapp2.2/PostcardApp.dll
+bin/Debug/netcoreapp2.2/PostcardApp.pdb
+obj/Debug/netcoreapp2.2/PostcardApp.dll
+obj/Debug/netcoreapp2.2/PostcardApp.pdb
+obj/Debug/netcoreapp2.2/PostcardApp.csproj.CoreCompileInputs.cache
 obj/Debug/netcoreapp2.2/PostcardApp.csprojAssemblyReference.cache
