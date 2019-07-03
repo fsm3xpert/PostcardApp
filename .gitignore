@@ -1,5 +1,5 @@
 /node_modules
-FileSystem/Images/
+FileSystem/
 Logs/
 bin/Debug/netcoreapp2.2/PostcardApp.dll
 bin/Debug/netcoreapp2.2/PostcardApp.pdb
