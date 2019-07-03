@@ -22,7 +22,7 @@ The project open in Visual Studio Code (or Visual Studio 2017/2019). Utilized AS
 
 ## Deployment
 
-Working on it.
+Working on it...
 
 ## Built With
 
