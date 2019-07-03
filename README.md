@@ -24,10 +24,6 @@ The project open in Visual Studio Code (or Visual Studio 2017/2019). Utilized AS
 
 Working on it.
 
-## Deployment
-
-Working on it.
-
 ## Built With
 
 * [jQuery](https://jquery.com/) - Used for document traversal, manipulation & event handling
