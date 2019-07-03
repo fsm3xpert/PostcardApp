@@ -1,4 +1,4 @@
-# PostcardApp
+# Postcard App
 
 A SPA application that takes image input from the user (e.g. drag and drop, file upload, camera, etc.), modifies the image, and sends it as an email to a specified recipient.
 
