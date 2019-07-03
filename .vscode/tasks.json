@@ -31,6 +31,17 @@
                 "${workspaceFolder}/PostcardApp.csproj"
             ],
             "problemMatcher": "$tsc"
+        },
+        {
+            "label": "gulp build",
+            "command": "gulp",
+            "args": [
+                "default"
+            ],
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceRoot}/lib"
+            }
         }
     ]
 }
