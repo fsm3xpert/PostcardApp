@@ -1,0 +1,18 @@
+body {
+    padding: 10px;
+}
+
+.fabric-container {
+    background: white;
+    border-radius: 1px;
+    box-shadow: 1px 1px 4px -1px rgba(0, 0, 0, .4);
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    z-index: 0;
+}
+
+.pull-right {
+    float: right !important;
+}
+

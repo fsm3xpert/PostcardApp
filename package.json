@@ -1,0 +1,62 @@
+{
+  "name": "postcardapp",
+  "version": "1.0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.7.8",
+    "angular-route": "^1.7.8",
+    "bootstrap": "^4.3.1",
+    "fabric": "^3.2.0",
+    "jquery": "^3.4.1",
+    "ng-file-upload": "^12.2.13",
+    "requirejs": "^2.3.6"
+  },
+  "overrides": {
+    "angular": {
+      "main": [
+        "angular.js"
+      ]
+    },
+    "angular-route": {
+      "main": [
+        "angular-route.js"
+      ]
+    },
+    "bootstrap": {
+      "main": [
+        "dist/js/bootstrap.bundle.js",
+        "dist/js/bootstrap.bundle.js.map",
+        "dist/css/bootstrap.css",
+        "dist/css/bootstrap.css.map"
+      ]
+    },
+    "fabric": {
+      "main": [
+        "dist/fabric.min.js"
+      ]
+    },
+    "ng-file-upload": {
+      "main": [
+        "dist/ng-file-upload.js"
+      ]
+    },
+    "requirejs": {
+      "main": [
+        "**/require.js"
+      ]
+    }
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-filter": "^6.0.0",
+    "gulp-load-plugins": "^1.6.0",
+    "npmfiles": "^0.1.3"
+  }
+}
