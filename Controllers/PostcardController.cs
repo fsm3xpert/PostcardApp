@@ -29,6 +29,44 @@ namespace PostcardApp.Controllers
         }
 
         [HttpPost]
+        public IActionResult UploadImage()
+        {
+            try
+            {
+                var data = Request.Form["file"];
+                var base64Data = Regex.Match(data, @"data:image/(?<type>.+?),(?<data>.+)").Groups["data"].Value;
+                var buffer = Convert.FromBase64String(base64Data);
+
+                if (buffer.Length > 0)
+                {
+                    string fileName = Guid.NewGuid().ToString() + ".png";
+                    string outputPath = _hostingEnvironment.ContentRootPath + "\\FileSystem\\Temp\\" + fileName;
+
+                    using (var stream = new MemoryStream(buffer))
+                    {
+                        using (var output = new FileStream(outputPath, FileMode.Create))
+                        {
+                            stream.CopyTo(output);
+                        }
+                    }
+
+                    Logger.WriteInfo("Upload Image temporary to File System.");
+
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteError(ex);
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpPost]
         public IActionResult SendEmail()
         {
             try
@@ -50,20 +88,22 @@ namespace PostcardApp.Controllers
                         }
                     }
 
-                    Logger.WriteInfo("Test Logs");
+                    Logger.WriteInfo("Image generated to File System.");
 
-                    // MailMessage mailMessage = new MailMessage();
-                    // mailMessage.From = new MailAddress("fsm.expert@outlook.com");
-                    // mailMessage.To.Add(Request.Form["sentEmailTo"].ToString());
-                    // mailMessage.Subject = Request.Form["subject"].ToString();
-                    // mailMessage.Body = Request.Form["body"].ToString();
-                    // mailMessage.Attachments.Add(new Attachment(outputPath));
+                    MailMessage mailMessage = new MailMessage();
+                    mailMessage.From = new MailAddress("fsm.expert@outlook.com");
+                    mailMessage.To.Add(Request.Form["sentEmailTo"].ToString());
+                    mailMessage.Subject = Request.Form["subject"].ToString();
+                    mailMessage.Body = Request.Form["body"].ToString();
+                    mailMessage.Attachments.Add(new Attachment(outputPath));
 
-                    // SmtpClient client = new SmtpClient("smtp.sendgrid.net");
-                    // client.UseDefaultCredentials = false;
-                    // client.Credentials = new NetworkCredential("apikey", "XYZ");
-                    // client.Port = 587;
-                    // client.Send(mailMessage);
+                    SmtpClient client = new SmtpClient("smtp.sendgrid.net");
+                    client.UseDefaultCredentials = false;
+                    client.Credentials = new NetworkCredential("apikey", "XYZ");
+                    client.Port = 587;
+                    client.Send(mailMessage);
+
+                    Logger.WriteInfo("Sent Postcard through Email.");
 
                     // var newImage = new Image {
                     //     ImageName = fileName,
@@ -74,6 +114,8 @@ namespace PostcardApp.Controllers
 
                     // _context.Images.Add(newImage);
                     // _context.SaveChanges();
+
+                    // Logger.WriteInfo("Save Image copy to Database.");
 
                     return Ok();
                 }
@@ -89,7 +131,6 @@ namespace PostcardApp.Controllers
             }
         }
 
-        // GET: api/Postcard
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Image>>> ListImages()
         {

@@ -1,54 +1,105 @@
 <form class="form-horizontal container" method="post" enctype="multipart/form-data">
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="btn-group">
-                <button type="button" class="btn btn-info" ng-click="addImage()">Image</button>
-                <button type="button" class="btn btn-danger" ng-click="resetImage()">Reset</button>
+    <div class="accordion" id="wizPostcard">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne">
+                        Select Image for Postcard
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseOne" class="collapse show" data-parent="#wizPostcard">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button type="button" class="btn btn-info" ng-click="addImage()">Default Image</button>
+                            <button type="button" class="btn btn-primary" ng-click="uploadImage()">Upload Image</button>
+                            <div class="btn-group" ng-hide="true">
+                                <button type="button" class="btn btn-info" ng-click="addImage()">Image</button>
+                                <button type="button" class="btn btn-danger" ng-click="resetImage()">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <hr />
-    <div class="row">
-        <div class="col-sm-3">
-            <div>
-                <p>
-                    <textarea class="form-control" rows="6" ng-model="imageText"></textarea>
-                </p>
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                        data-target="#collapseTwo">
+                        Add Message in Postcard Image
+                    </button>
+                </h2>
             </div>
-            <div class="btn-group" role="group">
-                <button type="button" class="btn btn-info" ng-click="addText()">Add Text</button>
-                <button type="button" class="btn btn-danger" ng-click="clearText()">Clear Text</button>
+            <div id="collapseTwo" class="collapse" data-parent="#wizPostcard">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div>
+                                <p>
+                                    <textarea class="form-control" rows="6" ng-model="imageText"></textarea>
+                                </p>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-info" ng-click="addText()">Add Text</button>
+                                <button type="button" class="btn btn-danger" ng-click="clearText()">Clear Text</button>
+                            </div>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="fabric-container">
+                                <canvas id="postcardCanvas"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button class="btn btn-sm btn-primary collapsed" type="button" data-toggle="collapse"
+                                data-target="#collapseThree">Next</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-sm-9">
-            <div class="fabric-container">
-                <canvas id="postcardCanvas"></canvas>
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                        data-target="#collapseThree">
+                        Sent Postcard to ...
+                    </button>
+                </h2>
             </div>
-        </div>
-    </div>
-    <hr />
-    <div class="form-group row">
-        <label for="sentEmailTo" class="col-sm-3 col-form-label text-right">To</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control" id="sentEmailTo" ng-model="sentEmailTo"
-                placeholder="johndoe@lol.com" ng-required="true" />
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="subject" class="col-sm-3 col-form-label text-right">Subject</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control" id="subject" ng-model="subject" ng-required="true" />
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="body" class="col-sm-3 col-form-label text-right">Body</label>
-        <div class="col-sm-6">
-            <textarea class="form-control" rows="6" id="body" ng-model="body" ng-required="true"></textarea>
-        </div>
-    </div>
-    <div class="form-group row">
-        <div class="offset-sm-3 col-sm-6">
-            <button type="submit" class="btn btn-success" ng-click="sendEmail()">Send Email</button>
+            <div id="collapseThree" class="collapse" data-parent="#wizPostcard">
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="sentEmailTo" class="col-sm-3 col-form-label text-right">To</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="sentEmailTo" ng-model="sentEmailTo"
+                                placeholder="johndoe@lol.com" ng-required="true" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="subject" class="col-sm-3 col-form-label text-right">Subject</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="subject" ng-model="subject"
+                                ng-required="true" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="body" class="col-sm-3 col-form-label text-right">Body</label>
+                        <div class="col-sm-6">
+                            <textarea class="form-control" rows="6" id="body" ng-model="body"
+                                ng-required="true"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="offset-sm-3 col-sm-6">
+                            <button type="submit" class="btn btn-success" ng-click="sendEmail()">Send Email</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </form>

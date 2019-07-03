@@ -10,12 +10,8 @@ define(["app"], function (app) {
 
         var init = function () {
             canvas = new fabric.Canvas("postcardCanvas");
-            canvas.setWidth(800);
-            canvas.setHeight(600);
-
-            $scope.sentEmailTo = "fsm.expert@outlook.com",
-            $scope.subject = "Test Subject",
-            $scope.body = "Test Body"
+            canvas.setWidth(768);
+            canvas.setHeight(576);
         };
 
         $scope.imageText = "Hello World !!!";
@@ -25,6 +21,11 @@ define(["app"], function (app) {
             fabric.Image.fromURL(imageUrl, function (img) {
                 canvas.add(img);
             });
+            $("#headingTwo button").click();
+        };
+
+        $scope.uploadImage = function () {
+            //
         };
 
         $scope.resetImage = function () {
@@ -63,7 +64,7 @@ define(["app"], function (app) {
                     alert("Email has been sent successfully.");
                 },
                 function (output) {
-                    alert("Some error occurred.");
+                    alert("Some error occurred, please contact system administrator.");
                 }
             );
         };

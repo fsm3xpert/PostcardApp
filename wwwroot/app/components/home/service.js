@@ -8,6 +8,14 @@ define(["app"], function (app) {
 
         var serviceBase = "http://localhost:5000/api/postcard/";
 
+        this.uploadImage = function (data) {
+            return Upload.upload({
+                url: serviceBase + "uploadImage/",
+                method: "POST",
+                data: data
+            });
+        };
+
         this.sendEmail = function (data) {
             return Upload.upload({
                 url: serviceBase + "sendEmail/",
@@ -16,7 +24,7 @@ define(["app"], function (app) {
             });
         };
 
-        this.lisImages = function () {
+        this.listImages = function () {
             return $http({
                 headers: { 'Content-Type': "application/json", 'Pragma': "no-cache", 'Cache-Control': "no-cache" },
                 url: serviceBase + "listImages/",

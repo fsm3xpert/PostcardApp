@@ -11,10 +11,10 @@ The project open in Visual Studio Code (or Visual Studio 2017/2019). Utilized AS
 - Captures image data from the user
 - Modifies the image data to contain a message
 - Sends an email containing the modified image as an attachment
+- Graceful error handling
 
 ### To Do
 
-- Graceful error handling
 - History of previously sent images
 - Full unit Integration test procedurestests
 - Capture multiple images and create a gif
