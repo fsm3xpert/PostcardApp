@@ -33,29 +33,24 @@ namespace PostcardApp.Controllers
         {
             try
             {
-                var data = Request.Form["file"];
-                var base64Data = Regex.Match(data, @"data:image/(?<type>.+?),(?<data>.+)").Groups["data"].Value;
-                var buffer = Convert.FromBase64String(base64Data);
+                var file = Request.Form.Files[0];
 
-                if (buffer.Length > 0)
+                if (file.Length > 0)
                 {
                     string fileName = Guid.NewGuid().ToString() + ".png";
-                    string outputPath = _hostingEnvironment.ContentRootPath + "\\FileSystem\\Temp\\" + fileName;
+                    string outputPath = _hostingEnvironment.ContentRootPath + "\\wwwroot\\temp\\" + fileName;
 
-                    using (var stream = new MemoryStream(buffer))
+                    using (var output = new FileStream(outputPath, FileMode.Create))
                     {
-                        using (var output = new FileStream(outputPath, FileMode.Create))
-                        {
-                            stream.CopyTo(output);
-                        }
+                        file.CopyTo(output);
                     }
 
-                    Logger.WriteInfo("Upload Image temporary to File System.");
-
-                    return Ok();
+                    Logger.WriteInfo("Image uploaded to File System on temporary location.");
+                    return Ok(fileName);
                 }
                 else
                 {
+                    Logger.WriteWarning("The bad uploaded request is sent from client.");
                     return BadRequest();
                 }
             }
@@ -115,12 +110,13 @@ namespace PostcardApp.Controllers
                     // _context.Images.Add(newImage);
                     // _context.SaveChanges();
 
-                    // Logger.WriteInfo("Save Image copy to Database.");
-
+                    Logger.WriteInfo("Save Image copy to Database.");
+                    
                     return Ok();
                 }
                 else
                 {
+                    Logger.WriteWarning("The bad request is sent from client.");
                     return BadRequest();
                 }
             }

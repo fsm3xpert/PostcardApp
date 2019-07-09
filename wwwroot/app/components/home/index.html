@@ -11,13 +11,17 @@
             <div id="collapseOne" class="collapse show" data-parent="#wizPostcard">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <button type="button" class="btn btn-info" ng-click="addImage()">Default Image</button>
-                            <button type="button" class="btn btn-primary" ng-click="uploadImage()">Upload Image</button>
-                            <div class="btn-group" ng-hide="true">
-                                <button type="button" class="btn btn-info" ng-click="addImage()">Image</button>
-                                <button type="button" class="btn btn-danger" ng-click="resetImage()">Reset</button>
+                            <button type="button" class="btn btn-primary" ng-model="files" ngf-select="uploadImage($files)" ngf-multiple="false" ngf-max-size="10MB">Upload Image</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="dropbox-container" ngf-drag-over-class="'dropbox-dragover'" ng-model="files" ngf-drop="uploadImage($files)" ngf-multiple="false" ngf-allow-dir="false">
+                                Please Drag & Drop Only One Image File.
                             </div>
+                            <div ngf-no-file-drop>File Drag & Drop is not supported for this browser</div>
                         </div>
                     </div>
                 </div>

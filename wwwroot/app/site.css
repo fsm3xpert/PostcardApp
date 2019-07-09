@@ -16,3 +16,15 @@ body {
     float: right !important;
 }
 
+.dropbox-container {
+    background: #F8F8F8;
+    border: 5px dashed #6c757d;
+    width: 98%;
+    height: 200px;
+    text-align: center;
+    padding-top: 25px;
+    margin: 10px;
+}
+.dropbox-dragover {
+    border: 5px dashed #17a2b8;
+}

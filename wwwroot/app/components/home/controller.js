@@ -24,8 +24,30 @@ define(["app"], function (app) {
             $("#headingTwo button").click();
         };
 
-        $scope.uploadImage = function () {
-            //
+        $scope.uploadImage = function ($files) {
+            if ($files.length == 1) {
+                if ($files[0].size > 10485760) {
+                    alert("File cannot be uploaded, due to it exceed the 10 MB limit.");
+                }
+                else {
+                    var data = {
+                        file: $files[0]
+                    }
+                    homeService.uploadImage(data).then(
+                        function (output) {
+                            //alert("Image has been uploaded successfully.");
+                            var imageUrl = "temp/" + output.data;
+                            fabric.Image.fromURL(imageUrl, function (img) {
+                                canvas.add(img);
+                            });
+                            $("#headingTwo button").click();
+                        },
+                        function (output) {
+                            alert("Some error occurred, please contact system administrator.");
+                        }
+                    );
+                }
+            }
         };
 
         $scope.resetImage = function () {
@@ -34,9 +56,9 @@ define(["app"], function (app) {
 
         $scope.addText = function () {
             var text = new fabric.Text($scope.imageText, {
-                left: 10,
-                top: 5,
-                fontSize: 15,
+                left: 300,
+                top: 300,
+                fontSize: 32,
                 fontFamily: 'Verdana',
                 fill: 'white'
             });
@@ -51,14 +73,12 @@ define(["app"], function (app) {
         };
 
         $scope.sendEmail = function () {
-
             var data = {
                 sentEmailTo: $scope.sentEmailTo,
                 subject: $scope.subject,
                 body: $scope.body,
                 file: canvas.toDataURL("image/png")
             };
-
             homeService.sendEmail(data).then(
                 function (output) {
                     alert("Email has been sent successfully.");
