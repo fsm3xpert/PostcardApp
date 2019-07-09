@@ -4,7 +4,11 @@ A SPA application that takes image input from the user (e.g. drag and drop, file
 
 ### Prerequisites
 
-The project open in Visual Studio Code (or Visual Studio 2017/2019). Utilized ASP.NET Core 2.x for server-side & AngularJS 1.7.x on client-side scripting, and using SQLite for database.
+These are the prerequisite web technologies and database utilized in the application:
+* Visual Studio Code (or Visual Studio 2017/2019) 
+* ASP.NET Core 2.x
+* AngularJS 1.7.x
+* SQLite
 
 ## Features
 
