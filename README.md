@@ -8,17 +8,19 @@ The project open in Visual Studio Code (or Visual Studio 2017/2019). Utilized AS
 
 ## Features
 
-- Captures image data from the user
-- Modifies the image data to contain a message
-- Sends an email containing the modified image as an attachment
-- Graceful error handling
+* Captures image data from the user
+  * File Upload By Browse Popup
+  * File Upload By Drag & Drop
+* Modifies the image data to contain a message
+* Sends an email containing the modified image as an attachment
+* Graceful error handling
 
 ### To Do
 
-- History of previously sent images
-- Full unit Integration test procedurestests
-- Capture multiple images and create a gif
-- Geotag images
+* History of previously sent images
+* Full unit Integration test procedurestests
+* Capture multiple images and create a gif
+* Geotag images
 
 ## Deployment
 
