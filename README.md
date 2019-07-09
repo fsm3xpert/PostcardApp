@@ -33,7 +33,7 @@ Working on it...
 * [Bootstrap](https://getbootstrap.com/) - For Responsive UI
 * [RequireJS](https://requirejs.org/) - Managing scripts and module dependencies
 * [FabricJS](http://fabricjs.com/) - Canvas library used for image modification
-* [ng-file-upload](https://github.com/danialfarid/ng-file-upload) - Upload modified image to server
+* [ng-file-upload](https://github.com/danialfarid/ng-file-upload) - Uploading image to server
 
 ## License
 
