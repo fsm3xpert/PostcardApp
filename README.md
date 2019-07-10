@@ -22,7 +22,7 @@ These are the prerequisite web technologies and database utilized in the applica
 ### To Do
 
 * History of previously sent images
-* Full unit Integration test procedurestests
+* Full unit test procedures
 * Capture multiple images and create a gif
 * Geotag images
 
