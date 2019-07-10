@@ -23,14 +23,6 @@ define(["app"], function (app) {
                 data: data
             });
         };
-
-        this.listImages = function () {
-            return $http({
-                headers: { 'Content-Type': "application/json", 'Pragma': "no-cache", 'Cache-Control': "no-cache" },
-                url: serviceBase + "listImages/",
-                method: "GET"
-            });
-        };
     };
 
     service.$inject = injectParams;

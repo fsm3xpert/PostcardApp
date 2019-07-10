@@ -19,7 +19,8 @@ var routeUrl = (function () {
             index: "app/components/image/index.html"
         },
         depend: [
-            "app/components/image/controller.js"
+            "app/components/image/controller.js",
+            "app/components/image/service.js"
         ]
     };
 

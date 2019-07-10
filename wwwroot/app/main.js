@@ -1,12 +1,13 @@
 require.config({
     baseUrl: "app",
-    urlAr1gs: "v=1.0.0.1",
+    urlArgs: "v=1.0.1",
     paths: {
         'jquery': "../lib/jquery",
         'bootstrap': "../lib/bootstrap.bundle",
         'angular': "../lib/angular",
         'angular-route': "../lib/angular-route",
         'ng-file-upload': "../lib/ng-file-upload",
+        'ng-table': "../lib/ng-table.min",
         'fabric': "../lib/fabric.min"
     },
     shim: {
@@ -16,7 +17,8 @@ require.config({
             'deps': ["jquery"]
         },
         'angular-route': ["angular"],
-        'ng-file-upload': ["angular"]
+        'ng-file-upload': ["angular"],
+        'ng-table': ["angular"]
     },
 });
 
@@ -26,6 +28,7 @@ require(
         "angular",
         "angular-route",
         "ng-file-upload",
+        "ng-table",
         "fabric",
         "routeResolver",
         "routeUrl",
@@ -35,6 +38,7 @@ require(
 
         var urls = [
             "../lib/bootstrap.css",
+            "../lib/ng-table.css",
             "../app/site.css"
         ];
 

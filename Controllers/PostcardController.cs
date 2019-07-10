@@ -85,20 +85,20 @@ namespace PostcardApp.Controllers
 
                     Logger.WriteInfo("Image generated to File System.");
 
-                    MailMessage mailMessage = new MailMessage();
-                    mailMessage.From = new MailAddress("fsm.expert@outlook.com");
-                    mailMessage.To.Add(Request.Form["sentEmailTo"].ToString());
-                    mailMessage.Subject = Request.Form["subject"].ToString();
-                    mailMessage.Body = Request.Form["body"].ToString();
-                    mailMessage.Attachments.Add(new Attachment(outputPath));
+                    // MailMessage mailMessage = new MailMessage();
+                    // mailMessage.From = new MailAddress("fsm.expert@outlook.com");
+                    // mailMessage.To.Add(Request.Form["sentEmailTo"].ToString());
+                    // mailMessage.Subject = Request.Form["subject"].ToString();
+                    // mailMessage.Body = Request.Form["body"].ToString();
+                    // mailMessage.Attachments.Add(new Attachment(outputPath));
 
-                    SmtpClient client = new SmtpClient("smtp.sendgrid.net");
-                    client.UseDefaultCredentials = false;
-                    client.Credentials = new NetworkCredential("apikey", "XYZ");
-                    client.Port = 587;
-                    client.Send(mailMessage);
+                    // SmtpClient client = new SmtpClient("smtp.sendgrid.net");
+                    // client.UseDefaultCredentials = false;
+                    // client.Credentials = new NetworkCredential("apikey", "XYZ");
+                    // client.Port = 587;
+                    // client.Send(mailMessage);
 
-                    Logger.WriteInfo("Sent Postcard through Email.");
+                    // Logger.WriteInfo("Sent Postcard through Email.");
 
                     // var newImage = new Image {
                     //     ImageName = fileName,
