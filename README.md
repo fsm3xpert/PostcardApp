@@ -4,7 +4,7 @@ A SPA application that takes image input from the user (e.g. drag and drop, file
 
 ### Prerequisites
 
-These are the prerequisite web technologies and database utilized in the application:
+These are the prerequisite web technologies and database utilized in this application:
 * Visual Studio Code (or Visual Studio 2017/2019) 
 * ASP.NET Core 2.x
 * AngularJS 1.7.x
@@ -38,6 +38,7 @@ Working on it...
 * [RequireJS](https://requirejs.org/) - Managing scripts and module dependencies
 * [FabricJS](http://fabricjs.com/) - Canvas library used for image modification
 * [ng-file-upload](https://github.com/danialfarid/ng-file-upload) - Uploading image to server
+* [ng-table](https://github.com/esvit/ng-table) - Table view of image listing
 
 ## License
 
