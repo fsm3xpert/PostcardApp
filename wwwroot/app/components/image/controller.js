@@ -14,7 +14,6 @@ define(["app"], function (app) {
                 getData: function (params) {
                     return imageService.listImages().then(
                         function (output) {
-                            debugger;
                             params.total(output.data.length);
                             return output.data;
                         },

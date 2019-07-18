@@ -14,6 +14,24 @@ define(["app"], function (app) {
             canvas.setHeight(576);
         };
 
+        var sendEmailWithGeoTag = function (geoTag) {
+            var data = {
+                geoTag: JSON.stringify(geoTag),
+                sentEmailTo: $scope.sentEmailTo,
+                subject: $scope.subject,
+                body: $scope.body,
+                file: canvas.toDataURL({ format: "jpeg", multiplier: 1.0 })
+            };
+            homeService.sendEmail(data).then(
+                function (output) {
+                    alert("Email has been sent successfully.");
+                },
+                function (output) {
+                    alert("Some error occurred, please contact system administrator.");
+                }
+            );
+        }
+
         $scope.imageText = "Hello World !!!";
 
         $scope.addImage = function () {
@@ -73,15 +91,14 @@ define(["app"], function (app) {
         };
 
         $scope.sendEmail = function () {
-            var data = {
-                sentEmailTo: $scope.sentEmailTo,
-                subject: $scope.subject,
-                body: $scope.body,
-                file: canvas.toDataURL("image/png")
-            };
-            homeService.sendEmail(data).then(
+            homeService.getIPStack().then(
                 function (output) {
-                    alert("Email has been sent successfully.");
+                    var geoTag = {
+                        ipAddress: output.data.ip,
+                        latitude: output.data.latitude,
+                        longitude: output.data.longitude
+                    };
+                    sendEmailWithGeoTag(geoTag);
                 },
                 function (output) {
                     alert("Some error occurred, please contact system administrator.");

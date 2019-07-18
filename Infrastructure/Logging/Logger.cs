@@ -22,14 +22,14 @@ namespace PostcardApp.Infrastructure.Logging
             _logger.Warn(message);
         }
 
-        public static void WriteError(string message, Exception ex)
+        public static void WriteError(string message)
         {
-            _logger.Error(message, ex);
+            _logger.Error(message);
         }
 
         public static void WriteError(Exception ex)
         {
-            _logger.Error(ex.Message, ex);
+            _logger.Error(ex);
         }
     }
 }

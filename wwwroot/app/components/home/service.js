@@ -23,6 +23,13 @@ define(["app"], function (app) {
                 data: data
             });
         };
+
+        this.getIPStack = function () {
+            return $http({
+                url: "http://api.ipstack.com/check?access_key=XYZ",
+                method: "GET"
+            });
+        };
     };
 
     service.$inject = injectParams;

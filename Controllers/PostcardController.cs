@@ -8,8 +8,8 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
+using MimeTypes;
 using PostcardApp.Infrastructure.Logging;
 using PostcardApp.Models;
 
@@ -33,11 +33,12 @@ namespace PostcardApp.Controllers
         {
             try
             {
+
                 var file = Request.Form.Files[0];
 
                 if (file.Length > 0)
                 {
-                    string fileName = Guid.NewGuid().ToString() + ".png";
+                    string fileName = Guid.NewGuid().ToString() + MimeTypeMap.GetExtension(file.ContentType);
                     string outputPath = _hostingEnvironment.ContentRootPath + "\\wwwroot\\temp\\" + fileName;
 
                     using (var output = new FileStream(outputPath, FileMode.Create))
@@ -45,7 +46,7 @@ namespace PostcardApp.Controllers
                         file.CopyTo(output);
                     }
 
-                    Logger.WriteInfo("Image uploaded to File System on temporary location.");
+                    Logger.WriteInfo("Image uploaded to temporary location.");
                     return Ok(fileName);
                 }
                 else
@@ -66,15 +67,19 @@ namespace PostcardApp.Controllers
         {
             try
             {
+                // Buffering the modified image from client
                 var data = Request.Form["file"];
                 var base64Data = Regex.Match(data, @"data:image/(?<type>.+?),(?<data>.+)").Groups["data"].Value;
                 var buffer = Convert.FromBase64String(base64Data);
 
+                // Validating the image is uploaded or not
                 if (buffer.Length > 0)
                 {
-                    string fileName = Guid.NewGuid().ToString() + ".png";
+                    string contentType = Regex.Match(data, @"data:(?<type>.+?);base64").Groups["type"].Value;
+                    string fileName = Guid.NewGuid().ToString() + MimeTypeMap.GetExtension(contentType);
                     string outputPath = _hostingEnvironment.ContentRootPath + "\\FileSystem\\Images\\" + fileName;
 
+                    // Move the image to File System
                     using (var stream = new MemoryStream(buffer))
                     {
                         using (var output = new FileStream(outputPath, FileMode.Create))
@@ -85,6 +90,7 @@ namespace PostcardApp.Controllers
 
                     Logger.WriteInfo("Image generated to File System.");
 
+                    // // Creating the email and attach the image file
                     // MailMessage mailMessage = new MailMessage();
                     // mailMessage.From = new MailAddress("fsm.expert@outlook.com");
                     // mailMessage.To.Add(Request.Form["sentEmailTo"].ToString());
@@ -92,6 +98,7 @@ namespace PostcardApp.Controllers
                     // mailMessage.Body = Request.Form["body"].ToString();
                     // mailMessage.Attachments.Add(new Attachment(outputPath));
 
+                    // // Sending the email through SMTP connection
                     // SmtpClient client = new SmtpClient("smtp.sendgrid.net");
                     // client.UseDefaultCredentials = false;
                     // client.Credentials = new NetworkCredential("apikey", "XYZ");
@@ -100,18 +107,20 @@ namespace PostcardApp.Controllers
 
                     // Logger.WriteInfo("Sent Postcard through Email.");
 
-                    // var newImage = new Image {
-                    //     ImageName = fileName,
-                    //     GeoTag = "", 
-                    //     CreatedOn = DateTime.Now, 
-                    //     ModifiedOn = DateTime.Now
-                    // };
+                    // Saving the image history to SQLite database
+                    var newImage = new Image
+                    {
+                        ImageName = fileName,
+                        GeoTag = Request.Form["geoTag"].ToString(),
+                        CreatedOn = DateTime.Now,
+                        ModifiedOn = DateTime.Now
+                    };
 
-                    // _context.Images.Add(newImage);
-                    // _context.SaveChanges();
+                    _context.Images.Add(newImage);
+                    _context.SaveChanges();
 
                     Logger.WriteInfo("Save Image copy to Database.");
-                    
+
                     return Ok();
                 }
                 else
