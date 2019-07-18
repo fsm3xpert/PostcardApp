@@ -18,13 +18,13 @@ These are the prerequisite web technologies and database utilized in this applic
 * Modifies the image data to contain a message
 * Sends an email containing the modified image as an attachment
 * Graceful error handling
+* History of previously sent images
+* Geotag images
 
 ### To Do
 
-* History of previously sent images
 * Full unit test procedures
 * Capture multiple images and create a gif
-* Geotag images
 
 ## Deployment
 
@@ -39,6 +39,7 @@ Working on it...
 * [FabricJS](http://fabricjs.com/) - Canvas library used for image modification
 * [ng-file-upload](https://github.com/danialfarid/ng-file-upload) - Uploading image to server
 * [ng-table](https://github.com/esvit/ng-table) - Table view of image listing
+* [ipstack](https://ipstack.com/) - Get coordinates for geotagging
 
 ## License
 
