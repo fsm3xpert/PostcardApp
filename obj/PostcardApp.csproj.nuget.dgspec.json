@@ -1,32 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "C:\\CodeRepo\\GitHub\\PostcardApp\\PostcardApp.csproj": {}
+    "c:\\CodeRepo\\Github\\PostcardApp\\PostcardApp.csproj": {}
   },
   "projects": {
-    "C:\\CodeRepo\\GitHub\\PostcardApp\\PostcardApp.csproj": {
+    "c:\\CodeRepo\\Github\\PostcardApp\\PostcardApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\CodeRepo\\GitHub\\PostcardApp\\PostcardApp.csproj",
+        "projectUniqueName": "c:\\CodeRepo\\Github\\PostcardApp\\PostcardApp.csproj",
         "projectName": "PostcardApp",
-        "projectPath": "C:\\CodeRepo\\GitHub\\PostcardApp\\PostcardApp.csproj",
-        "packagesPath": "C:\\Users\\Farhan\\.nuget\\packages\\",
-        "outputPath": "C:\\CodeRepo\\GitHub\\PostcardApp\\obj\\",
+        "projectPath": "c:\\CodeRepo\\Github\\PostcardApp\\PostcardApp.csproj",
+        "packagesPath": "C:\\Users\\fsmex\\.nuget\\packages\\",
+        "outputPath": "c:\\CodeRepo\\Github\\PostcardApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Farhan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\fsmex\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
