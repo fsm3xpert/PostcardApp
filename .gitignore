@@ -9,6 +9,7 @@ obj/Debug/netcoreapp2.2/PostcardApp.csproj.CoreCompileInputs.cache
 obj/Debug/netcoreapp2.2/PostcardApp.csprojAssemblyReference.cache
 obj/Debug/netcoreapp2.2/PostcardApp.RazorAssemblyInfo.cache
 obj/Debug/netcoreapp2.2/PostcardApp.RazorTargetAssemblyInfo.cache
+obj/PostcardApp.csproj.nuget.cache
 FileSystem/Images/*
 FileSystem/Temp/*
 Logs/*
