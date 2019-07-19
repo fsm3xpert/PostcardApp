@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\CodeRepo\\Github\\PostcardApp\\PostcardApp.csproj": {}
+    "C:\\CodeRepo\\Github\\PostcardApp\\PostcardApp.csproj": {}
   },
   "projects": {
-    "c:\\CodeRepo\\Github\\PostcardApp\\PostcardApp.csproj": {
+    "C:\\CodeRepo\\Github\\PostcardApp\\PostcardApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\CodeRepo\\Github\\PostcardApp\\PostcardApp.csproj",
+        "projectUniqueName": "C:\\CodeRepo\\Github\\PostcardApp\\PostcardApp.csproj",
         "projectName": "PostcardApp",
-        "projectPath": "c:\\CodeRepo\\Github\\PostcardApp\\PostcardApp.csproj",
+        "projectPath": "C:\\CodeRepo\\Github\\PostcardApp\\PostcardApp.csproj",
         "packagesPath": "C:\\Users\\fsmex\\.nuget\\packages\\",
-        "outputPath": "c:\\CodeRepo\\Github\\PostcardApp\\obj\\",
+        "outputPath": "C:\\CodeRepo\\Github\\PostcardApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

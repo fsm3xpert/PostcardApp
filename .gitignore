@@ -1,11 +1,15 @@
 /node_modules
 bin/Debug/netcoreapp2.2/PostcardApp.dll
 bin/Debug/netcoreapp2.2/PostcardApp.pdb
+bin/Debug/netcoreapp2.2/PostcardApp.deps.json
+bin/Debug/netcoreapp2.2/PostcardApp.runtimeconfig.json
+bin/Debug/netcoreapp2.2/PostcardApp.runtimeconfig.dev.json
 obj/Debug/netcoreapp2.2/PostcardApp.dll
 obj/Debug/netcoreapp2.2/PostcardApp.pdb
 obj/Debug/netcoreapp2.2/PostcardApp.AssemblyInfoInputs.cache
 obj/Debug/netcoreapp2.2/PostcardApp.assets.cache
 obj/Debug/netcoreapp2.2/PostcardApp.csproj.CoreCompileInputs.cache
+obj/Debug/netcoreapp2.2/PostcardApp.csproj.FileListAbsolute.txt
 obj/Debug/netcoreapp2.2/PostcardApp.csprojAssemblyReference.cache
 obj/Debug/netcoreapp2.2/PostcardApp.RazorAssemblyInfo.cache
 obj/Debug/netcoreapp2.2/PostcardApp.RazorTargetAssemblyInfo.cache
