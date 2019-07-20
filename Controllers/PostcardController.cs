@@ -33,7 +33,6 @@ namespace PostcardApp.Controllers
         {
             try
             {
-
                 var file = Request.Form.Files[0];
 
                 if (file.Length > 0)
@@ -41,12 +40,53 @@ namespace PostcardApp.Controllers
                     string fileName = Guid.NewGuid().ToString() + MimeTypeMap.GetExtension(file.ContentType);
                     string outputPath = _hostingEnvironment.ContentRootPath + "\\wwwroot\\temp\\" + fileName;
 
+                    Directory.CreateDirectory(_hostingEnvironment.ContentRootPath + "\\wwwroot\\temp\\");
                     using (var output = new FileStream(outputPath, FileMode.Create))
                     {
                         file.CopyTo(output);
                     }
 
                     Logger.WriteInfo("Image uploaded to temporary location.");
+                    return Ok(fileName);
+                }
+                else
+                {
+                    Logger.WriteWarning("The bad uploaded request is sent from client.");
+                    return BadRequest();
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteError(ex);
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult UploadSnapshot()
+        {
+            try
+            {
+                var data = Request.Form["file"];
+                var base64Data = Regex.Match(data, @"data:image/(?<type>.+?),(?<data>.+)").Groups["data"].Value;
+                var buffer = Convert.FromBase64String(base64Data);
+
+                if (buffer.Length > 0)
+                {
+                    string contentType = Regex.Match(data, @"data:(?<type>.+?);base64").Groups["type"].Value;
+                    string fileName = Guid.NewGuid().ToString() + MimeTypeMap.GetExtension(contentType);
+                    string outputPath = _hostingEnvironment.ContentRootPath + "\\wwwroot\\temp\\" + fileName;
+
+                    using (var stream = new MemoryStream(buffer))
+                    {
+                        Directory.CreateDirectory(_hostingEnvironment.ContentRootPath + "\\wwwroot\\temp\\");
+                        using (var output = new FileStream(outputPath, FileMode.Create))
+                        {
+                            stream.CopyTo(output);
+                        }
+                    }
+
+                    Logger.WriteInfo("Snapshot uploaded to temporary location.");
                     return Ok(fileName);
                 }
                 else
@@ -82,6 +122,7 @@ namespace PostcardApp.Controllers
                     // Move the image to File System
                     using (var stream = new MemoryStream(buffer))
                     {
+                        Directory.CreateDirectory(_hostingEnvironment.ContentRootPath + "\\FileSystem\\Images\\");
                         using (var output = new FileStream(outputPath, FileMode.Create))
                         {
                             stream.CopyTo(output);

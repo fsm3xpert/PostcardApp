@@ -10,18 +10,36 @@
             </div>
             <div id="collapseOne" class="collapse show" data-parent="#wizPostcard">
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-12">
+                    <div class="form-group row" ng-hide="showWebcam">
+                        <div class="col-sm-6">
                             <button type="button" class="btn btn-info" ng-click="addImage()">Default Image</button>
-                            <button type="button" class="btn btn-primary" ng-model="files" ngf-select="uploadImage($files)" ngf-multiple="false" ngf-max-size="10MB">Upload Image</button>
+                            <button type="button" class="btn btn-primary" ng-model="files"
+                                ngf-select="uploadImage($files)" ngf-multiple="false" ngf-max-size="10MB">Upload
+                                Image</button>
+                        </div>
+                        <div class="col-sm-6 text-right">
+                            <button type="button" class="btn btn-success" ng-click="openWebcam()">Open Webcam</button>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="form-group row" ng-hide="showWebcam">
                         <div class="col-sm-12">
-                            <div class="dropbox-container" ngf-drag-over-class="'dropbox-dragover'" ng-model="files" ngf-drop="uploadImage($files)" ngf-multiple="false" ngf-allow-dir="false">
+                            <div class="dropbox-container" ngf-drag-over-class="'dropbox-dragover'" ng-model="files"
+                                ngf-drop="uploadImage($files)" ngf-multiple="false" ngf-allow-dir="false">
                                 Please Drag & Drop Only One Image File.
                             </div>
                             <div ngf-no-file-drop>File Drag & Drop is not supported for this browser</div>
+                        </div>
+                    </div>
+                    <div class="form-group row" ng-show="showWebcam">
+                        <div class="col-sm-12 text-right">
+                            <button type="button" class="btn btn-primary" ng-click="takeSnapshot()">Take Snapshot</button>
+                            <button type="button" class="btn btn-secondary" ng-click="closeWebcam()">Cancel</button>
+                        </div>
+                    </div>
+                    <div class="form-group row" ng-if="showWebcam">
+                        <div class="col-sm-12">
+                            <webcam channel="webcamChannel" on-error="webcamErrorCallback(err)"></webcam>
+                            <canvas ng-hide="true" id="snapshot" width="800" height="600"></canvas>
                         </div>
                     </div>
                 </div>

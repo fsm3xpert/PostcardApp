@@ -2,11 +2,13 @@
 
 define(["app"], function (app) {
 
-    var injectParams = ["$scope", "homeService"];
+    var injectParams = ["$scope", "$window", "homeService"];
 
-    var controller = function ($scope, homeService) {
+    var controller = function ($scope, $window, homeService) {
 
         var canvas = {};
+
+        //#region "Private Methods"
 
         var init = function () {
             canvas = new fabric.Canvas("postcardCanvas");
@@ -32,7 +34,17 @@ define(["app"], function (app) {
             );
         }
 
+        //#endregion
+
         $scope.imageText = "Hello World !!!";
+        $scope.showWebcam = false;
+        $scope.activeStream = {};
+        $scope.webcamChannel = {
+            videoWidth: 768,
+            videoHeight: 576
+        };
+
+        //#region "Image Upload Methods"
 
         $scope.addImage = function () {
             var imageUrl = "img/01.jpg";
@@ -50,10 +62,9 @@ define(["app"], function (app) {
                 else {
                     var data = {
                         file: $files[0]
-                    }
+                    };
                     homeService.uploadImage(data).then(
                         function (output) {
-                            //alert("Image has been uploaded successfully.");
                             var imageUrl = "temp/" + output.data;
                             fabric.Image.fromURL(imageUrl, function (img) {
                                 canvas.add(img);
@@ -71,6 +82,59 @@ define(["app"], function (app) {
         $scope.resetImage = function () {
             canvas.clear();
         };
+
+        //#endregion
+
+        //#region "Webcam Methods"
+
+        $scope.openWebcam = function () {
+            $scope.showWebcam = true;
+        };
+
+        $scope.closeWebcam = function () {
+            $scope.showWebcam = false;
+        };
+
+        $scope.takeSnapshot = function () {
+            var hiddenCanvas = document.createElement("canvas");
+            hiddenCanvas.width = $scope.webcamChannel.video.width;
+            hiddenCanvas.height = $scope.webcamChannel.video.height;
+            var ctx = hiddenCanvas.getContext("2d");
+            ctx.drawImage($scope.webcamChannel.video, 0, 0, $scope.webcamChannel.video.width, $scope.webcamChannel.video.height);
+            var data = {
+                file: hiddenCanvas.toDataURL()
+            };
+            homeService.uploadSnapshot(data).then(
+                function (output) {
+                    var imageUrl = "temp/" + output.data;
+                    fabric.Image.fromURL(imageUrl, function (img) {
+                        canvas.add(img);
+                    });
+                    $("#headingTwo button").click();
+                },
+                function (output) {
+                    alert("Some error occurred, please contact system administrator.");
+                }
+            );
+        };
+
+        $scope.onStream = function (webcamStream) {
+            debugger;
+            $scope.activeStream = webcamStream;
+            return $scope.activeStream;
+        };
+
+        $scope.webcamErrorCallback = function (error) {
+            if (error.name == "PermissionDeniedError") {
+                $scope.showWebcam = false;
+                alert("Please give permission to webcam to take snapshot.");
+                $window.location.reload();
+            }
+        };
+
+        //#endregion
+
+        //#region "Image Modification Methods"
 
         $scope.addText = function () {
             var text = new fabric.Text($scope.imageText, {
@@ -90,6 +154,10 @@ define(["app"], function (app) {
             });
         };
 
+        //#endregion
+
+        //#region "Email Methods"
+
         $scope.sendEmail = function () {
             homeService.getIPStack().then(
                 function (output) {
@@ -105,6 +173,8 @@ define(["app"], function (app) {
                 }
             );
         };
+
+        //#endregion
 
         (function () {
             init();

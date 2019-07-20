@@ -16,7 +16,8 @@
     "fabric": "^3.2.0",
     "jquery": "^3.4.1",
     "ng-file-upload": "^12.2.13",
-    "requirejs": "^2.3.6"
+    "requirejs": "^2.3.6",
+    "webcam": "^3.2.1"
   },
   "overrides": {
     "angular": {

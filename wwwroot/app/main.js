@@ -1,6 +1,6 @@
 require.config({
     baseUrl: "app",
-    urlArgs: "v=1.0.1",
+    urlArgs: "v=1.0.2",
     paths: {
         'jquery': "../lib/jquery",
         'bootstrap': "../lib/bootstrap.bundle",
@@ -8,6 +8,7 @@ require.config({
         'angular-route': "../lib/angular-route",
         'ng-file-upload': "../lib/ng-file-upload",
         'ng-table': "../lib/ng-table.min",
+        'webcam': "../lib/webcam.min",
         'fabric': "../lib/fabric.min"
     },
     shim: {
@@ -18,7 +19,8 @@ require.config({
         },
         'angular-route': ["angular"],
         'ng-file-upload': ["angular"],
-        'ng-table': ["angular"]
+        'ng-table': ["angular"],
+        'webcam': ["angular"]
     },
 });
 
@@ -29,6 +31,7 @@ require(
         "angular-route",
         "ng-file-upload",
         "ng-table",
+        "webcam",
         "fabric",
         "routeResolver",
         "routeUrl",

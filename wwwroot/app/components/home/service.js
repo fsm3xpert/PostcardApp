@@ -16,6 +16,14 @@ define(["app"], function (app) {
             });
         };
 
+        this.uploadSnapshot = function (data) {
+            return Upload.upload({
+                url: serviceBase + "uploadSnapshot/",
+                method: "POST",
+                data: data
+            });
+        };
+
         this.sendEmail = function (data) {
             return Upload.upload({
                 url: serviceBase + "sendEmail/",

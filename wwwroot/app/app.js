@@ -2,7 +2,7 @@
 
 define([], function () {
     
-    var app = angular.module("PostcardApp", ["ngRoute", "ngFileUpload", "ngTable", "routeResolverService"]);
+    var app = angular.module("PostcardApp", ["ngRoute", "ngFileUpload", "ngTable", "webcam", "routeResolverService"]);
 
     app.config(["$routeProvider", "$controllerProvider", "$provide", "routeResolverProvider",
         function ($routeProvider, $controllerProvider, $provide, routeResolverProvider) {
