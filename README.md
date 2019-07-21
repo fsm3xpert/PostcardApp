@@ -15,6 +15,7 @@ These are the prerequisite web technologies and database utilized in this applic
 * Captures image data from the user
   * File Upload By Browse Popup
   * File Upload By Drag & Drop
+  * Take snapshot from webcam
 * Modifies the image data to contain a message
 * Sends an email containing the modified image as an attachment
 * Graceful error handling
@@ -39,6 +40,7 @@ Working on it...
 * [FabricJS](http://fabricjs.com/) - Canvas library used for image modification
 * [ng-file-upload](https://github.com/danialfarid/ng-file-upload) - Uploading image to server
 * [ng-table](https://github.com/esvit/ng-table) - Table view of image listing
+* [webcam](https://github.com/jonashartmann/webcam-directive) - Take snapshot from webcam
 * [ipstack](https://ipstack.com/) - Get coordinates for geotagging
 
 ## License
